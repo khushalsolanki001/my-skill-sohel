@@ -90,7 +90,7 @@ const Navigation = () => {
                 Follow Me
               </Button>
               <Button
-                onClick={() => window.open('http://localhost:8081', '_blank')}
+                onClick={() => window.open('https://my-art-ten.vercel.app/', '_blank')}
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 py-3 rounded-xl font-semibold hover-lift text-lg transition-colors duration-300 text-white uppercase"
                 style={{ fontFamily: "Pepi Medium, sans-serif" }}
               >
@@ -136,7 +136,7 @@ const Navigation = () => {
                   Follow Me
                 </Button>
                 <Button
-                  onClick={() => window.open('http://localhost:8081', '_blank')}
+                  onClick={() => window.open('https://my-art-ten.vercel.app/', '_blank')}
                   className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 py-4 rounded-xl font-semibold text-lg transition-colors duration-300 text-white uppercase"
                   style={{ fontFamily: "Pepi Medium, sans-serif" }}
                 >
