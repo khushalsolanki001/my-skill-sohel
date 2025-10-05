@@ -81,13 +81,20 @@ const Navigation = () => {
                 <span>{item.label}</span>
               </button>
             ))}
-            <div className="ml-4 pl-4 border-l border-border">
+            <div className="ml-4 pl-4 border-l border-border flex gap-2">
               <Button
                 onClick={() => scrollToSection("#contact")}
                 className="btn-glow px-8 py-3 rounded-xl font-semibold hover-lift text-lg transition-colors duration-300 hover:text-red-600 uppercase"
                 style={{ fontFamily: "Pepi Medium, sans-serif" }}
               >
                 Follow Me
+              </Button>
+              <Button
+                onClick={() => window.open('http://localhost:8081', '_blank')}
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 py-3 rounded-xl font-semibold hover-lift text-lg transition-colors duration-300 text-white uppercase"
+                style={{ fontFamily: "Pepi Medium, sans-serif" }}
+              >
+                Art Gallery
               </Button>
             </div>
           </div>
@@ -120,13 +127,20 @@ const Navigation = () => {
                   <span>{item.label}</span>
                 </button>
               ))}
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-4 border-t border-white/10 space-y-3">
                 <Button
                   onClick={() => scrollToSection("#contact")}
                   className="w-full btn-glow py-4 rounded-xl font-semibold text-lg transition-colors duration-300 hover:text-red-600 uppercase"
                   style={{ fontFamily: "Pepi Medium, sans-serif" }}
                 >
                   Follow Me
+                </Button>
+                <Button
+                  onClick={() => window.open('http://localhost:8081', '_blank')}
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 py-4 rounded-xl font-semibold text-lg transition-colors duration-300 text-white uppercase"
+                  style={{ fontFamily: "Pepi Medium, sans-serif" }}
+                >
+                  Art Gallery
                 </Button>
               </div>
             </div>
