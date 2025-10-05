@@ -1,81 +1,167 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Code2, Database, Layers, Zap } from "lucide-react";
+import { Palette, Image as ImageIcon, Type as TypeIcon, Camera, Sparkles, Target, Rocket, PenTool } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById("about");
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const highlights = [
     {
-      icon: Code2,
-      title: "Clean Code",
-      description: "Writing maintainable, efficient code following best practices and industry standards."
+      icon: Palette,
+      title: "Brand Identity",
+      description: "Crafting cohesive brand systems: logos, color palettes, typography, and guidelines.",
+      color: "from-red-500 to-red-600",
+      delay: 0,
     },
     {
-      icon: Database,
-      title: "Problem Solving",
-      description: "Analytical thinking and systematic approach to complex programming challenges."
+      icon: ImageIcon,
+      title: "Social Media Graphics",
+      description: "High-impact posts, stories, reels covers, and ad creatives tailored for engagement.",
+      color: "from-purple-500 to-pink-500",
+      delay: 1,
     },
     {
-      icon: Layers,
-      title: "Full Stack",
-      description: "Experience spanning from low-level system programming to modern web development."
+      icon: PenTool,
+      title: "Marketing Collaterals",
+      description: "Flyers, posters, brochures, pitch decks, banners, and print-ready assets.",
+      color: "from-green-500 to-emerald-500",
+      delay: 2,
     },
     {
-      icon: Zap,
-      title: "Performance",
-      description: "Optimizing applications for speed, efficiency, and resource management."
-    }
+      icon: Camera,
+      title: "Photo Editing",
+      description: "Professional retouching and color grading using Adobe Photoshop and Lightroom.",
+      color: "from-yellow-500 to-orange-500",
+      delay: 3,
+    },
+  ];
+
+  const stats = [
+    { label: "Brand Projects", value: "50+", icon: Target },
+    { label: "Years Experience", value: "2+", icon: Rocket },
+    { label: "Happy Clients", value: "30+", icon: Sparkles },
   ];
 
   return (
-    <section id="about" className="py-20 px-6 bg-gradient-secondary">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="section-padding relative overflow-hidden">
+      {/* Minimal Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-accent/3 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container-custom relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          {/* 🔴 Removed "About Me" pill completely */}
+          
+          <h2
+            className={`text-5xl md:text-7xl font-black mb-6 text-gradient animate-slide-up-delayed ${
+              isVisible ? "animate-slide-up-delayed" : ""
+            }`}
+          >
+            GRAPHIC DESIGNER
+          </h2>
+
+          <p
+            className={`text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in ${
+              isVisible ? "animate-fade-in" : ""
+            }`}
+          >
+            Specializing in branding, social media graphics, marketing collaterals, and custom
+            creative solutions
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Content */}
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              About Me
-            </h2>
-            
-            <div className="space-y-4 text-lg text-muted-foreground mb-8">
-              <p>
-                I'm a dedicated programmer with a strong foundation in multiple programming 
-                languages and technologies. My journey spans from low-level system programming 
-                with C and C++ to modern web development with HTML and CSS.
+          <div className={`animate-slide-up ${isVisible ? "animate-slide-up" : ""}`}>
+            <div className="space-y-6 text-lg text-muted-foreground mb-12">
+              <p className="leading-relaxed">
+                I am SOHEL KHAN, a creative and detail-oriented Graphic Designer with over 2 years of
+                experience delivering visually compelling designs that bring ideas to life.
+                Skilled in Adobe Photoshop, Adobe Illustrator, Adobe Lightroom, Canva, and Figma.
               </p>
-              
-              <p>
-                I believe in writing clean, efficient code and continuously learning new 
-                technologies to solve complex problems. Whether it's building robust systems 
-                or creating engaging web experiences, I approach each project with attention 
-                to detail and a commitment to quality.
+
+              <p className="leading-relaxed">
+                I specialize in branding materials, social media graphics, marketing collaterals, and
+                custom creative solutions tailored to client needs. With a strong eye for aesthetics,
+                color, and typography, I ensure every design communicates the intended message
+                effectively.
               </p>
-              
-              <p>
-                My diverse skill set allows me to work across different domains and contribute 
-                meaningfully to various types of projects.
+
+              <p className="leading-relaxed">
+                Education: 12th from D.T.S.S. College of Commerce. Graphic Design Trainer experience.
+                Graphic Design course at Dynamic Computer Education. Freelance Graphic Designing
+                experience delivering professional, modern, and impactful designs that help businesses
+                stand out and connect with their audience.
               </p>
             </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6">
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <div
+                    key={index}
+                    className="text-center glass-card p-6 rounded-2xl hover-lift"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Icon className="h-6 w-6 text-primary-foreground" />
+                    </div>
+                    <div className="text-2xl font-bold text-gradient mb-1">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          
+
           {/* Highlights Grid */}
           <div className="grid sm:grid-cols-2 gap-6">
             {highlights.map((item, index) => {
               const Icon = item.icon;
               return (
-                <Card key={index} className="shadow-card hover:shadow-glow transition-all duration-300 group">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="h-6 w-6 text-primary-foreground" />
+                <div
+                  key={index}
+                  className={`card-professional p-6 text-center group cursor-pointer animate-scale-in ${
+                    isVisible ? "animate-scale-in" : ""
+                  }`}
+                  style={{ animationDelay: `${item.delay * 0.2}s` }}
+                >
+                  <div className="relative mb-6">
+                    <div
+                      className={`w-16 h-16 bg-gradient-to-r ${item.color} rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-glow`}
+                    >
+                      <Icon className="h-8 w-8 text-white" />
                     </div>
-                    
-                    <h3 className="text-lg font-semibold mb-2">
-                      {item.title}
-                    </h3>
-                    
-                    <p className="text-sm text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
               );
             })}
           </div>
