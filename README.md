@@ -1,7 +1,7 @@
-# Welcome to your Lovable project
+# Welcome 
 
 ## Project info
-
+this project was for fun and friend request.
 LIVE DEMO :- https://my-skill-sohel.vercel.app/
 
 ## How can I edit this code?
